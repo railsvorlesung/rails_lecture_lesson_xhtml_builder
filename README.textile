@@ -1,0 +1,87 @@
+h1. (X)HTML Builder
+
+Erstellen Sie eine Ruby-Klasse zum Erstellen von (X)HTML-Dokumenten unter Verwendung von Block-Funktionen und Ruby - Metaprogrammierung.
+Die resultierende Klasse soll wie folgt verwendet werden können und zudem dem der hier angehängten RSpec-Spezifikation genügen.
+
+h2. Hinweis
+
+Überschreiben Sie die die Methode method_missing und fangen Sie damit die Aufrufe auf nicht-existierende Methoden ab. Jede nicht-existierende Methode soll zu einem Standard-HTML-Tag werden:
+
+h2. Beispiel
+
+pre. require 'xhtml_builder'
+b = XHTMLBuilder.new
+b.html do
+  b.head do
+    b.title("My Fancy Webpage")
+  end
+  b.body do
+    b.h1("Fancy Title")
+    b.p do
+     b.b("Bold words")
+      b.i("Followed by italic words")
+    end
+    b.p("Paragraph without a block")
+    b.p do
+      "Has a string in a block"
+    end
+    b.div do
+      b.ul do
+        4.times do |i|
+          b.li("This is item nr #{i}")
+        end
+      end
+    end
+  end
+end
+puts b.content
+
+Ausgabe:
+pre. <html>
+<head>
+<title>
+My Fancy Webpage
+</title>
+</head>
+<body>
+<h1>
+Fancy Title
+</h1>
+<p>
+<b>
+Bold words
+</b>
+<i>
+Followed by italic words
+</i>
+</p>
+<p>
+Paragraph without a block
+</p>
+<p>
+</p>
+<div>
+<ul>
+<li>
+This is item nr 0
+</li>
+<li>
+This is item nr 1
+</li>
+<li>
+This is item nr 2
+</li>
+<li>
+This is item nr 3
+</li>
+</ul>
+</div>
+</body>
+</html>
+
+h2. Hintergrund
+
+Die ausprogrammierte Idee dieser Übung ist als eigenständiges Ruby-Gem namens „Builder“ verfügbar ("http://builder.rubyforge.org/":http://builder.rubyforge.org/).
+Es ist fester Bestandteil von ActiveRecord und somit des Ruby on Rails-Frameworks. Verwendet wird es zur Bereitstellung der to_xml-Methoden von ActiveRecord-Objekten. In Rails kann jedes ActiveRecord-Objekt (Datensatz) durch Aufruf dieser Methode in einen XML-String umgewandelt werden.
+
+Diese Übung erfordert sicherlich einiges an Denksport, ist jedoch ein hervorragendes Beispiel zur Demonstration von Block-Funktionen und Meta-Programmierung. Es wird deutlich, wie leicht es ist, Domain Specific Languages (DSLs) in Ruby zu verfasse, hat man einmal die Einstiegshürde genommen.
