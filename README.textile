@@ -37,47 +37,7 @@ end
 puts b.content
 
 Ausgabe:
-pre. <html>
-<head>
-<title>
-My Fancy Webpage
-</title>
-</head>
-<body>
-<h1>
-Fancy Title
-</h1>
-<p>
-<b>
-Bold words
-</b>
-<i>
-Followed by italic words
-</i>
-</p>
-<p>
-Paragraph without a block
-</p>
-<p>
-</p>
-<div>
-<ul>
-<li>
-This is item nr 0
-</li>
-<li>
-This is item nr 1
-</li>
-<li>
-This is item nr 2
-</li>
-<li>
-This is item nr 3
-</li>
-</ul>
-</div>
-</body>
-</html>
+ "http://gist.github.com/362638":http://gist.github.com/362638
 
 h2. Hintergrund
 
